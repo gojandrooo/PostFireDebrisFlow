@@ -12,13 +12,13 @@ by Daniel Roten, Jessica Block, Daniel Crawl, Jenny Lee, and Ilkay Altintas
 - PostgreSQL with PostGIS module
 - xarray with rioxarray extension
 - Dask
-- scikit-learn
-- distributed computing environment. The Nautilus Kubernetes cluster was used in the examples.
+- Scikit-learn
+- Distributed computing environment. The Nautilus Kubernetes cluster was used in the examples.
 
 ## Notebooks
 
 - The data preparation notebook [add_site_ids.ipynb](data_preparation/add_site_ids.ipynb) creates an unique Site ID and adds it as additonal column.
-- 
+- The Dask notebook [
 
 
 ## Data sources:
