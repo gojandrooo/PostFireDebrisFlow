@@ -65,7 +65,7 @@ and the repo was added:
 
 Installing (deploying) requires the yaml file [pysheds_dask_values.yaml](pysheds_dask_values.yaml) 
 to limit the requested resources, otherwise the scheduler requests the pods automatically.
-The options `jupyter.rbac=False` and `jupyter.serviceAccountName=null` where needed to avoid 
+The options `jupyter.rbac=False` and `jupyter.serviceAccountName=null` were needed to avoid 
 interference with existing installations of Dask running on Nautilus.
 The library [pysheds](https://github.com/mdbartos/pysheds) that is installed with this 
 configuration is used to calculate the catchment area for debris flow sites, hence the naming.
