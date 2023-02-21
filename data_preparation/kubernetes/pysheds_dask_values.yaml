@@ -1,0 +1,57 @@
+jupyter:
+  rbac: false
+  serviceAccountName: null
+  password: 'argon2:enter_your_password_hash_here'
+  env:
+  - name: EXTRA_PIP_PACKAGES
+    value: pandas geopandas pysheds numpy xarray rioxarray matplotlib pyarrow shapely pygeos
+  resources:
+    limits:
+      memory: 4Gi
+      cpu: 2
+    requests:
+      memory: 1Gi
+      cpu: 1
+  mounts:
+    volumes:
+      - name: root
+        persistentVolumeClaim:
+          claimName: staley-debrisflow
+    volumeMounts:
+      - name: root
+        mountPath: /home/jovyan/pysheds/
+
+worker:
+  replicas: 1
+  env:
+  - name: EXTRA_PIP_PACKAGES
+    value: pandas geopandas pysheds numpy xarray rioxarray matplotlib pyarrow shapely pygeos
+  resources:
+    limits:
+      memory: 4Gi
+      cpu: 1
+    requests:
+      memory: 2Gi
+      cpu: 1
+  mounts:
+    volumes:
+      - name: root
+        persistentVolumeClaim:
+          claimName: staley-debrisflow
+    volumeMounts:
+      - name: root
+        mountPath: /home/jovyan/pysheds/
+  threads_per_worker: 1
+  # one worker per CPU
+  extraArgs:
+    - --nworkers 
+    - "-1"
+
+scheduler:
+  resources:
+    limits:
+      memory: 2Gi
+      cpu: 2
+    requests:
+      memory: 1Gi
+      cpu: 1
