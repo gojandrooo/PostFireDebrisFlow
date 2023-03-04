@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: df-access-pod
+spec:
+  containers:
+  - name: df-data-access
+    image: alpine
+    args: ["sleep", "36500000"]
+    resources:
+      limits:
+        memory: 2Gi
+        cpu: 1
+      requests:
+        memory: 1Gi
+        cpu: 1
+    volumeMounts:
+    - mountPath: /dfdata/
+      name: dfdata
+  restartPolicy: Never
+  volumes:
+    - name: dfdata
+      persistentVolumeClaim:
+        claimName: staley-debrisflow
+
+
